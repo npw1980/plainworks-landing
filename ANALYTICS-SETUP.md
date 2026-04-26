@@ -197,7 +197,7 @@ Example minimal banner code (can be added to a shared script):
 </script>
 ```
 
-### Immediate Action Items
+### Immediate Action Items for Nathan
 1. [ ] Replace `G-PLAINWORKS` with real GA4 Measurement ID.
 2. [ ] Replace `google-site-verification-content` with real GSC verification string.
 3. [ ] Verify site in Google Search Console and submit `sitemap.xml`.
@@ -206,4 +206,42 @@ Example minimal banner code (can be added to a shared script):
 
 ---
 
-*Last updated: 2026-04-26*
+## 6. Analytics Access for Nathan White
+
+### Google Analytics 4
+**Account:** To be created at [analytics.google.com](https://analytics.google.com)
+
+**Access Instructions:**
+1. Create a Google Analytics 4 property using the email associated with `plainworks.ai`
+2. Once created, share access with `nathanpwhite@gmail.com` with "Editor" permissions
+3. Measurement ID format: `G-XXXXXXXXXX` (replace in all HTML files once obtained)
+
+### Google Search Console
+**Account:** To be verified at [search.google.com/search-console](https://search.google.com/search-console)
+
+**Access Instructions:**
+1. Verify ownership using the HTML meta tag (already embedded)
+2. Once verified, add `nathanpwhite@gmail.com` as an owner or user
+
+### Analytics Documentation Location
+All analytics documentation is stored in the `npw1980/plainworks-landing` repo:
+- `ANALYTICS-SETUP.md` — Complete setup guide and weekly metrics dashboard
+- `UTM-GUIDELINES.md` — UTM parameter naming conventions and campaign tracking
+- `SEO-FOUNDATION.md` — Technical SEO documentation
+
+---
+
+## 7. Files Modified for PLA-56
+
+| File | Change |
+|------|--------|
+| `index.html` | GA4 tracking code (placeholder ID `G-PLAINWORKS`)
+| `blog/index.html` | GA4 tracking + conversion events
+| `blog/*.html` | GA4 tracking + blog post view events
+| `audit/index.html` | GA4 tracking + audit funnel events
+| `UTM-GUIDELINES.md` | **NEW** — UTM parameter standards
+| `ANALYTICS-SETUP.md` | Updated with access section and file manifest
+
+---
+
+*Last updated: 2026-04-26 (PLA-56)*
