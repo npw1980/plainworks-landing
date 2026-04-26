@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PLAINWORKS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PLAINWORKS');
+  </script>
+  <!-- Google Search Console -->
+  <meta name="google-site-verification" content="google-site-verification-content" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Audit Self-Assessment — Plainworks</title>
+  <link rel="canonical" href="https://plainworks.ai/audit/">
+  <meta name="description" content="Score your business across 6 critical AI areas and get personalized recommendations in 5 minutes.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://plainworks.ai/audit/">
+  <meta property="og:title" content="AI Audit Self-Assessment — Plainworks">
+  <meta property="og:description" content="Score your business across 6 critical AI areas and get personalized recommendations in 5 minutes.">
+  <meta property="og:site_name" content="Plainworks.ai">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Audit Self-Assessment — Plainworks">
+  <meta name="twitter:description" content="Score your business across 6 critical AI areas and get personalized recommendations in 5 minutes.">
+  <style>
+    :root {
+      --bg: #fafbfc;
+      --card: #ffffff;
+      --text: #1a1a2e;
+      --text-secondary: #5a5a6e;
+      --border: #e2e4ea;
+      --accent: #0d7377;
+      --accent-light: #e6f4f4;
+      --accent-dark: #095c5f;
+      --cta: #ff6b35;
+      --cta-dark: #e55a2b;
+      --radius: 12px;
+      --shadow: 0 2px 8px rgba(0,0,0,0.06);
+      --shadow-lg: 0 8px 32px rgba(0,0,0,0.10);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 24px 16px;
+    }
+    .container { max-width: 720px; margin: 0 auto; }
+
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 40px 24px 32px;
+    }
+    .logo {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .header h1 {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .header p {
+      color: var(--text-secondary);
+      font-size: 17px;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* Progress */
+    .progress-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--bg);
+      padding: 12px 0;
+      margin-bottom: 8px;
+    }
+    .progress-bar {
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    .progress-text {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 6px;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      margin-bottom: 20px;
+      border: 1px solid var(--border);
+    }
+    .area-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .area-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      color: var(--accent-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+    .area-title {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    /* Questions */
+    .question {
+      margin-bottom: 20px;
+    }
+    .question:last-child { margin-bottom: 0; }
+    .question-text {
+      font-size: 15px;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+    .scale {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .scale label {
+      flex: 1;
+      min-width: 52px;
+      cursor: pointer;
+    }
+    .scale input { display: none; }
+    .scale .btn {
+      display: block;
+      text-align: center;
+      padding: 10px 8px;
+      border-radius: 8px;
+      border: 2px solid var(--border);
+      background: var(--card);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      transition: all 0.15s ease;
+    }
+    .scale .btn:hover { border-color: var(--accent); }
+    .scale input:checked + .btn {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .scale-legend {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--text-secondary);
+      margin-top: 6px;
+      padding: 0 4px;
+    }
+
+    /* Submit */
+    .submit-wrap {
+      text-align: center;
+      padding: 32px 0 48px;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--cta);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 14px 36px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(255,107,53,0.30);
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--cta-dark); }
+    .btn-primary:disabled {
+      background: #ccc;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+
+    /* Results */
+    .results { display: none; }
+    .results.show { display: block; }
+    .score-card {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .score-label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      opacity: 0.9;
+      margin-bottom: 8px;
+    }
+    .score-value {
+      font-size: 64px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .score-max {
+      font-size: 18px;
+      opacity: 0.8;
+    }
+    .maturity-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(4px);
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 15px;
+      font-weight: 700;
+      margin-top: 16px;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .recommendations h2 {
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+    .rec-list {
+      list-style: none;
+    }
+    .rec-list li {
+      padding: 12px 0 12px 28px;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+    }
+    .rec-list li:last-child { border-bottom: none; }
+    .rec-list li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .cta-box {
+      background: var(--accent-light);
+      border: 1px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 28px;
+      text-align: center;
+      margin-top: 28px;
+    }
+    .cta-box h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+    .cta-box p {
+      color: var(--text-secondary);
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+    .cta-box .btn-primary {
+      box-shadow: 0 4px 12px rgba(13,115,119,0.25);
+    }
+
+    .breakdown {
+      margin-top: 24px;
+    }
+    .breakdown h2 {
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+    .area-score {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .area-score-name {
+      flex: 1;
+      font-size: 14px;
+    }
+    .area-score-bar-wrap {
+      width: 140px;
+      height: 8px;
+      background: var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .area-score-bar {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 4px;
+      transition: width 0.5s ease;
+    }
+    .area-score-val {
+      width: 40px;
+      text-align: right;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-secondary);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 32px 0;
+      color: var(--text-secondary);
+      font-size: 13px;
+    }
+    .footer a { color: var(--accent); text-decoration: none; }
+
+    @media print {
+      body { background: #fff; padding: 0; }
+      .progress-wrap, .submit-wrap, .cta-box { display: none; }
+      .card { box-shadow: none; border: 1px solid #ddd; break-inside: avoid; }
+      .results { display: block !important; }
+      .scale .btn { border: 1px solid #999; }
+      .scale input:checked + .btn { background: #0d7377 !important; color: #fff !important; }
+    }
+
+    @media (max-width: 560px) {
+      .header h1 { font-size: 26px; }
+      .card { padding: 20px; }
+      .scale label { min-width: 44px; }
+      .scale .btn { padding: 10px 4px; font-size: 12px; }
+      .score-value { font-size: 48px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">Plainworks.ai</div>
+      <h1>AI Audit Self-Assessment</h1>
+      <p>Score your business across 6 core areas in 3 minutes. Get your maturity level and a personalized action plan.</p>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-text" id="progressText">0 of 24 questions answered</div>
+    </div>
+
+    <form id="auditForm">
+      <!-- Area 1: Tool Inventory -->
+      <div class="card">
+        <div class="area-header">
+          <div class="area-num">1</div>
+          <div class="area-title">Current Tool Inventory</div>
+        </div>
+        <div class="question" data-area="tools">
+          <div class="question-text">1. You have a documented list of every software tool your business currently uses.</div>
+          <div class="scale">
+            <label><input type="radio" name="q1" value="0"><span class="btn">0</span></label>
+            <label><input type="radio" name="q1" value="1"><span class="btn">1</span></label>
+            <label><input type="radio" name="q1" value="2"><span class="btn">2</span></label>
+            <label><input type="radio" name="q1" value="3"><span class="btn">3</span></label>
+            <label><input type="radio" name="q1" value="4"><span class="btn">4</span></label>
+            <label><input type="radio" name="q1" value="5"><span class="btn">5</span></label>
+          </div>
+          <div class="scale-legend"><span>Not at all</span><span>Fully</span></div>
+        </div>
+        <div class="question" data-area="tools">
+          <div class="question-text">2. You evaluate new AI tools or features at least once per quarter.</div>
+          <div class="scale">
+            <label><input type="radio" name="q2" value="0"><span class="btn">0</span></label>
+            <label><input type="radio" name="q2" value="1"><span class="btn">1</span></label>
+            <label><input type="radio" name="q2" value="2"><span class="btn">2</span></label>
+            <label><input type="radio" name="q2" value="3"><span class="btn">3</span></label>
+            <label><input type="radio" name="q2" value="4"><span class="btn">4</span></label>
+            <label><input type="radio" name="q2" value="5"><span class="btn">5</span></label>
+          </div>
+          <div class="scale-legend"><span>Never</span><span>Constantly</span></div>
+        </div>
+        <div class="question" data-area="tools">
+          <div class="question-text">3. Your existing software has AI capabilities that you actively use (not just own).</div>
+          <div class="scale">
+            <label><input type="radio" name="q3" value="0"><span class="btn">0</span></label>
+            <label><input type="radio" name="q3" value="1"><span class="btn">1</span></label>
+            <label><input type="radio" name="q3" value="2"><span class="btn">2</span></label>
+            <label><input type="radio" name="q3" value="3"><span class="btn">3</span></label>
+            <label><input type="radio" name="q3" value="4"><span class="btn">4</span></label>
+            <label><input type="radio" name="q3" value="5"><span class="btn">5</span></label>
+          </div>
+          <div class="scale-legend"><span>None</span><span>Most</span></div>
+        </div>
+        <div class="question" data-area="tools">
+          <div class="question-text">4. You know your total software spend per employee and review it for redundancy.</div>
+          <div class="scale">
+            <label><input type="radio" name="q4" value="0"><span class="btn">0</span></label>
+            <label><input type="radio" name="q4" value="1"><span class="btn">1</span></label>
+            <label><input type="radio" name="q4" value="2"><span class="btn">2</span></label>
+            <label><input type="radio" name="q4" value="3"><span class="btn">3</span></label>
+            <label><input type="radio" name="q4" value="4"><span class="btn">4</span></label>
+            <label><input type="radio" name="q4" value="5"><span class="btn">5</span></label>
+          </div>
+          <div class="scale-legend"><span>No idea</span><span>Tracked monthly</span></div>
+        </div>
+      </div>
+
+      <!-- Area 2: Workflow Automation -->
+      <div class="card">
+        <div class="area-header">
+          <div class="area-num">2</div>
+          <div class="area-title">Workflow Automation</div>
+        </div>
+        <div class="question" data-area="workflow">
+          <div class="question-text">5. Repetitive tasks (data entry, routing, reminders) run without human intervention.</div>
+          <div class="scale">
+            <label><input type="radio" name="q5" value="0"><span class="btn">0</span></label>
+            <label><input type="radio" name="q5" value="1"><span class="btn">1</span></label>
+            <label><input type="radio" name="q5" value="2"><span class="btn">2</span></label>
+            <label><input type="radio" name="q5" value="3"><span class="btn">3</span></label>
+            <label><input type="radio" name="q5" value="4"><span class="btn">4</span></label>
+            <label><input type="radio" name="q5" value="5"><span class="btn">5</span></label>
+          </div>
+          <div class="scale-legend"><span>None</span><span>Most</span></div>
+        </div>
+        <div class="question" data-area="workflow">
+          <div class="question-text">6. New hires can execute core processes using documented, step-by-step guides.</div>
+          <div class="scale">
+            <label><input type="radio" name="q6" value="0"><span class="btn">0</span></label>
+            <label><input type="radio" name="q6" value="1"><span class="btn">1</span></label>
+            <label><input type="radio" name="q6" value="2"><span class="btn">2</span></label>
+            <label><input type="radio" name="q6" value="3"><span class="btn">3</span></label>
+            <label><input type="radio" name="q6" value="4"><span class="btn">4</span></label>
+            <label><input type="radio" name="q6" value="5"><span class="btn">5</span></label>
+          </div>
+          <div class="scale-legend"><span>Tribal knowledge</span><span>Fully documented</span></div>
+        </div>
+        <div class="question" data-area="workflow">
+          <div class="question-text">7. You use AI to handle scheduling, email triage, meeting notes, or follow-ups.</div>
+          <div class="scale">
+            <label><input type="radio" name="q7" value="0"><span class="btn">0</span></label>
+            <label><input type="radio" name="q7" value="1"><span class="btn">1</span></label>
+            <label><input type="radio" name="q7" value="2"><span class="btn">2</span></label>
+            <label><input type="radio" name="q7" value="3"><span class="btn">3</span></label>
+            <label><input type="radio" name="q7" value="4"><span class="btn">4</span></label>
+            <label><input type="radio" name="q7" value="5"><span class="btn">5</span></label>
+          </div>
+          <div class="scale-legend"><span>Never</span><span>Daily</span></div>
+        </div>
+        <div class="question" data-area="workflow">
+          <div class="question-text">8. When a business rule changes, your workflows update automatically (not via manual retraining).</div>
+          <div class="scale">
+            <label><input type="radio" name="q8" value="0"><span class="btn">0</span></label>
+            <label><input type="radio" name="q8" value="1"><span class="btn">1</span></label>
+            <label><input type="radio" name="q8" value="2"><span class="btn">2</span></label>
+            <label><input type="radio" name="q8" value="3"><span class="btn">3</span></label>
+            <label><input type="radio" name="q8" value="4"><span class="btn">4</span></label>
+            <label><input type="radio" name="q8" value="5"><span class="btn">5</span></label>
+          </div>
+          <div class="scale-legend"><span>Manual updates</span><span>Self-updating</span></div>
+        </div>
+      </div>
+
+      <!-- Area 3: Content / Marketing AI -->
+      <div class="card">
+        <div class="area-header">
+          <div class="area-num">3</div>
+          <div class="area-title">Content &amp; Marketing AI</div>
+        </div>
+        <div class="question" data-area="marketing">
+          <div class="question-text">9. You use AI to draft, edit, or repurpose marketing copy, emails, or social content.</div>
+          <div class="scale">
+            <label><input type="radio" name="q9" value="0"><span class="btn">0</span></label>
+            <label><input type="radio" name="q9" value="1"><span class="btn">1</span></label>
+            <label><input type="radio" name="q9" value="2"><span class="btn">2</span></label>
+            <label><input type="radio" name="q9" value="3"><span class="btn">3</span></label>
+            <label><input type="radio" name="q9" value="4"><span class="btn">4</span></label>
+            <label><input type="radio" name="q9" value="5"><span class="btn">5</span></label>
+          </div>
+          <div class="scale-legend"><span>Never</span><span>Every piece</span></div>
+        </div>
+        <div class="question" data-area="marketing">
+          <div class="question-text">10. Your content is personalized based on audience segments, behavior, or funnel stage.</div>
+          <div class="scale">
+            <label><input type="radio" name="q10" value="0"><span class="btn">0</span></label>
+            <label><input type="radio" name="q10" value="1"><span class="btn">1</span></label>
+            <label><input type="radio" name="q10" value="2"><span class="btn">2</span></label>
+            <label><input type="radio" name="q10" value="3"><span class="btn">3</span></label>
+            <label><input type="radio" name="q10" value="4"><span class="btn">4</span></label>
+            <label><input type="radio" name="q10" value="5"><span class="btn">5</span></label>
+          </div>
+          <div class="scale-legend"><span>One-size-fits-all</span><span>Dynamic</span></div>
+        </div>
+        <div class="question" data-area="marketing">
+          <div class="question-text">11. You automatically distribute one piece of content across multiple channels.</div>
+          <div class="scale">
+            <label><input type="radio" name="q11" value="0"><span class="btn">0</span></label>
+            <label><input type="radio" name="q11" value="1"><span class="btn">1</span></label>
+            <label><input type="radio" name="q11" value="2"><span class="btn">2</span></label>
+            <label><input type="radio" name="q11" value="3"><span class="btn">3</span></label>
+            <label><input type="radio" name="q11" value="4"><span class="btn">4</span></label>
+            <label><input type="radio" name="q11" value="5"><span class="btn">5</span></label>
+          </div>
+          <div class="scale-legend"><span>Manual cross-post</span><span>Fully automated</span></div>
+        </div>
+        <div class="question" data-area="marketing">
+          <div class="question-text">12. SEO, keyword research, or competitive content analysis is assisted by AI tools.</div>
+          <div class="scale">
+            <label><input type="radio" name="q12" value="0"><span class="btn">0</span></label>
+            <label><input type="radio" name="q12" value="1"><span class="btn">1</span></label>
+            <label><input type="radio" name="q12" value="2"><span class="btn">2</span></label>
+            <label><input type="radio" name="q12" value="3"><span class="btn">3</span></label>
+            <label><input type="radio" name="q12" value="4"><span class="btn">4</span></label>
+            <label><input type="radio" name="q12" value="5"><span class="btn">5</span></label>
+          </div>
+          <div class="scale-legend"><span>No AI help</span><span>Integrated</span></div>
+        </div>
+      </div>
+
+      <!-- Area 4: Customer Service AI -->
+      <div class="card">
+        <div class="area-header">
+          <div class="area-num">4</div>
+          <div class="area-title">Customer Service AI</div>
+        </div>
+        <div class="question" data-area="service">
+          <div class="question-text">13. Customers can get answers to common questions without waiting for a human.</div>
+          <div class="scale">
+            <label><input type="radio" name="q13" value="0"><span class="btn">0</span></label>
+            <label><input type="radio" name="q13" value="1"><span class="btn">1</span></label>
+            <label><input type="radio" name="q13" value="2"><span class="btn">2</span></label>
+            <label><input type="radio" name="q13" value="3"><span class="btn">3</span></label>
+            <label><input type="radio" name="q13" value="4"><span class="btn">4</span></label>
+            <label><input type="radio" name="q13" value="5"><span class="btn">5</span></label>
+          </div>
+          <div class="scale-legend"><span>Always human</span><span>Self-serve first</span></div>
+        </div>
+        <div class="question" data-area="service">
+          <div class="question-text">14. You use AI to analyze support conversations for trends, sentiment, or training gaps.</div>
+          <div class="scale">
+            <label><input type="radio" name="q14" value="0"><span class="btn">0</span></label>
+            <label><input type="radio" name="q14" value="1"><span class="btn">1</span></label>
+            <label><input type="radio" name="q14" value="2"><span class="btn">2</span></label>
+            <label><input type="radio" name="q14" value="3"><span class="btn">3</span></label>
+            <label><input type="radio" name="q14" value="4"><span class="btn">4</span></label>
+            <label><input type="radio" name="q14" value="5"><span class="btn">5</span></label>
+          </div>
+          <div class="scale-legend"><span>Never</span><span>Weekly reviews</span></div>
+        </div>
+        <div class="question" data-area="service">
+          <div class="question-text">15. First-response time for common inquiries is under 1 hour (including after hours).</div>
+          <div class="scale">
+            <label><input type="radio" name="q15" value="0"><span class="btn">0</span></label>
+            <label><input type="radio" name="q15" value="1"><span class="btn">1</span></label>
+            <label><input type="radio" name="q15" value="2"><span class="btn">2</span></label>
+            <label><input type="radio" name="q15" value="3"><span class="btn">3</span></label>
+            <label><input type="radio" name="q15" value="4"><span class="btn">4</span></label>
+            <label><input type="radio" name="q15" value="5"><span class="btn">5</span></label>
+          </div>
+          <div class="scale-legend"><span>Days</span><span>Instant</span></div>
+        </div>
+        <div class="question" data-area="service">
+          <div class="question-text">16. You proactively reach out to customers based on behavior signals (usage drops, milestones).</div>
+          <div class="scale">
+            <label><input type="radio" name="q16" value="0"><span class="btn">0</span></label>
+            <label><input type="radio" name="q16" value="1"><span class="btn">1</span></label>
+            <label><input type="radio" name="q16" value="2"><span class="btn">2</span></label>
+            <label><input type="radio" name="q16" value="3"><span class="btn">3</span></label>
+            <label><input type="radio" name="q16" value="4"><span class="btn">4</span></label>
+            <label><input type="radio" name="q16" value="5"><span class="btn">5</span></label>
+          </div>
+          <div class="scale-legend"><span>Reactive only</span><span>Triggered outreach</span></div>
+        </div>
+      </div>
+
+      <!-- Area 5: Data / Analytics -->
+      <div class="card">
+        <div class="area-header">
+          <div class="area-num">5</div>
+          <div class="area-title">Data &amp; Analytics</div>
+        </div>
+        <div class="question" data-area="data">
+          <div class="question-text">17. You have a centralized dashboard with the 3-5 metrics that actually drive decisions.</div>
+          <div class="scale">
+            <label><input type="radio" name="q17" value="0"><span class="btn">0</span></label>
+            <label><input type="radio" name="q17" value="1"><span class="btn">1</span></label>
+            <label><input type="radio" name="q17" value="2"><span class="btn">2</span></label>
+            <label><input type="radio" name="q17" value="3"><span class="btn">3</span></label>
+            <label><input type="radio" name="q17" value="4"><span class="btn">4</span></label>
+            <label><input type="radio" name="q17" value="5"><span class="btn">5</span></label>
+          </div>
+          <div class="scale-legend"><span>Scattered guesses</span><span>Live dashboard</span></div>
+        </div>
+        <div class="question" data-area="data">
+          <div class="question-text">18. Reports are generated automatically rather than manually compiled in spreadsheets.</div>
+          <div class="scale">
+            <label><input type="radio" name="q18" value="0"><span class="btn">0</span></label>
+            <label><input type="radio" name="q18" value="1"><span class="btn">1</span></label>
+            <label><input type="radio" name="q18" value="2"><span class="btn">2</span></label>
+            <label><input type="radio" name="q18" value="3"><span class="btn">3</span></label>
+            <label><input type="radio" name="q18" value="4"><span class="btn">4</span></label>
+            <label><input type="radio" name="q18" value="5"><span class="btn">5</span></label>
+          </div>
+          <div class="scale-legend"><span>Manual only</span><span>Auto-generated</span></div>
+        </div>
+        <div class="question" data-area="data">
+          <div class="question-text">19. You use AI or statistical models to forecast sales, churn, inventory, or demand.</div>
+          <div class="scale">
+            <label><input type="radio" name="q19" value="0"><span class="btn">0</span></label>
+            <label><input type="radio" name="q19" value="1"><span class="btn">1</span></label>
+            <label><input type="radio" name="q19" value="2"><span class="btn">2</span></label>
+            <label><input type="radio" name="q19" value="3"><span class="btn">3</span></label>
+            <label><input type="radio" name="q19" value="4"><span class="btn">4</span></label>
+            <label><input type="radio" name="q19" value="5"><span class="btn">5</span></label>
+          </div>
+          <div class="scale-legend"><span>Gut feel</span><span>Model-driven</span></div>
+        </div>
+        <div class="question" data-area="data">
+          <div class="question-text">20. Your data is clean, accessible, and governed by clear ownership rules.</div>
+          <div class="scale">
+            <label><input type="radio" name="q20" value="0"><span class="btn">0</span></label>
+            <label><input type="radio" name="q20" value="1"><span class="btn">1</span></label>
+            <label><input type="radio" name="q20" value="2"><span class="btn">2</span></label>
+            <label><input type="radio" name="q20" value="3"><span class="btn">3</span></label>
+            <label><input type="radio" name="q20" value="4"><span class="btn">4</span></label>
+            <label><input type="radio" name="q20" value="5"><span class="btn">5</span></label>
+          </div>
+          <div class="scale-legend"><span>Chaos</span><span>Governed</span></div>
+        </div>
+      </div>
+
+      <!-- Area 6: Security / Compliance -->
+      <div class="card">
+        <div class="area-header">
+          <div class="area-num">6</div>
+          <div class="area-title">Security &amp; Compliance</div>
+        </div>
+        <div class="question" data-area="security">
+          <div class="question-text">21. You have a written AI usage policy that employees have read and acknowledged.</div>
+          <div class="scale">
+            <label><input type="radio" name="q21" value="0"><span class="btn">0</span></label>
+            <label><input type="radio" name="q21" value="1"><span class="btn">1</span></label>
+            <label><input type="radio" name="q21" value="2"><span class="btn">2</span></label>
+            <label><input type="radio" name="q21" value="3"><span class="btn">3</span></label>
+            <label><input type="radio" name="q21" value="4"><span class="btn">4</span></label>
+            <label><input type="radio" name="q21" value="5"><span class="btn">5</span></label>
+          </div>
+          <div class="scale-legend"><span>No policy</span><span>Signed &amp; current</span></div>
+        </div>
+        <div class="question" data-area="security">
+          <div class="question-text">22. You know whether customer data is being used to train third-party AI models.</div>
+          <div class="scale">
+            <label><input type="radio" name="q22" value="0"><span class="btn">0</span></label>
+            <label><input type="radio" name="q22" value="1"><span class="btn">1</span></label>
+            <label><input type="radio" name="q22" value="2"><span class="btn">2</span></label>
+            <label><input type="radio" name="q22" value="3"><span class="btn">3</span></label>
+            <label><input type="radio" name="q22" value="4"><span class="btn">4</span></label>
+            <label><input type="radio" name="q22" value="5"><span class="btn">5</span></label>
+          </div>
+          <div class="scale-legend"><span>No idea</span><span>Audited &amp; blocked</span></div>
+        </div>
+        <div class="question" data-area="security">
+          <div class="question-text">23. AI-generated outputs are reviewed for accuracy before client or customer delivery.</div>
+          <div class="scale">
+            <label><input type="radio" name="q23" value="0"><span class="btn">0</span></label>
+            <label><input type="radio" name="q23" value="1"><span class="btn">1</span></label>
+            <label><input type="radio" name="q23" value="2"><span class="btn">2</span></label>
+            <label><input type="radio" name="q23" value="3"><span class="btn">3</span></label>
+            <label><input type="radio" name="q23" value="4"><span class="btn">4</span></label>
+            <label><input type="radio" name="q23" value="5"><span class="btn">5</span></label>
+          </div>
+          <div class="scale-legend"><span>Send as-is</span><span>Always reviewed</span></div>
+        </div>
+        <div class="question" data-area="security">
+          <div class="question-text">24. Critical business data is backed up automatically with a tested recovery plan.</div>
+          <div class="scale">
+            <label><input type="radio" name="q24" value="0"><span class="btn">0</span></label>
+            <label><input type="radio" name="q24" value="1"><span class="btn">1</span></label>
+            <label><input type="radio" name="q24" value="2"><span class="btn">2</span></label>
+            <label><input type="radio" name="q24" value="3"><span class="btn">3</span></label>
+            <label><input type="radio" name="q24" value="4"><span class="btn">4</span></label>
+            <label><input type="radio" name="q24" value="5"><span class="btn">5</span></label>
+          </div>
+          <div class="scale-legend"><span>No backup</span><span>Tested recovery</span></div>
+        </div>
+      </div>
+
+      <div class="submit-wrap">
+        <button type="submit" class="btn-primary" id="submitBtn">Get My AI Maturity Score</button>
+      </div>
+    </form>
+
+    <!-- Results -->
+    <div class="results" id="results">
+      <div class="score-card">
+        <div class="score-label">Your AI Maturity Score</div>
+        <div class="score-value" id="scoreValue">0</div>
+        <div class="score-max">out of 120</div>
+        <div class="maturity-badge" id="maturityBadge">AI-Curious</div>
+      </div>
+
+      <div class="card breakdown">
+        <h2>Score Breakdown</h2>
+        <div id="breakdown"></div>
+      </div>
+
+      <div class="card recommendations">
+        <h2>Your Personalized Action Plan</h2>
+        <ul class="rec-list" id="recList"></ul>
+      </div>
+
+      <div class="cta-box">
+        <h3>Want the full picture?</h3>
+        <p>This self-assessment is a starting point. A Plainworks AI Audit gives you a detailed report across all 6 areas, a prioritized 90-day roadmap, and a clear budget for becoming AI-native.</p>
+        <a href="https://plainworks.ai/#contact" class="btn-primary" data-track="audit_book_click" data-cta-location="audit_results">Book a Full AI Audit</a>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Built by <a href="https://plainworks.ai">Plainworks.ai</a> · Self-assessment for informational purposes</p>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('auditForm');
+    const progressFill = document.getElementById('progressFill');
+    const progressText = document.getElementById('progressText');
+    const results = document.getElementById('results');
+    const submitBtn = document.getElementById('submitBtn');
+    const totalQuestions = 24;
+    const maxPerQuestion = 5;
+
+    function updateProgress() {
+      const answered = form.querySelectorAll('input[type="radio"]:checked').length;
+      const pct = Math.round((answered / totalQuestions) * 100);
+      progressFill.style.width = pct + '%';
+      progressText.textContent = answered + ' of ' + totalQuestions + ' questions answered';
+    }
+
+    form.addEventListener('change', updateProgress);
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const answered = form.querySelectorAll('input[type="radio"]:checked').length;
+      if (answered < totalQuestions) {
+        alert('Please answer all ' + totalQuestions + ' questions to get your score.');
+        return;
+      }
+
+      // Calculate scores
+      const areaScores = { tools: 0, workflow: 0, marketing: 0, service: 0, data: 0, security: 0 };
+      const areaCounts = { tools: 0, workflow: 0, marketing: 0, service: 0, data: 0, security: 0 };
+      const areaNames = {
+        tools: 'Current Tool Inventory',
+        workflow: 'Workflow Automation',
+        marketing: 'Content & Marketing AI',
+        service: 'Customer Service AI',
+        data: 'Data & Analytics',
+        security: 'Security & Compliance'
+      };
+
+      form.querySelectorAll('input[type="radio"]:checked').forEach(input => {
+        const area = input.closest('.question').dataset.area;
+        areaScores[area] += parseInt(input.value);
+        areaCounts[area]++;
+      });
+
+      const totalScore = Object.values(areaScores).reduce((a, b) => a + b, 0);
+      const maxScore = totalQuestions * maxPerQuestion;
+
+      // Maturity level
+      let maturity, maturityDesc;
+      if (totalScore <= 40) {
+        maturity = 'AI-Curious';
+        maturityDesc = 'You are in the early stages of AI adoption. Most processes are manual, tools are underutilized, and there is significant low-hanging fruit.';
+      } else if (totalScore <= 80) {
+        maturity = 'AI-Enabled';
+        maturityDesc = 'You have adopted AI in pockets. Some workflows are automated, but integration and strategy are inconsistent across teams.';
+      } else {
+        maturity = 'AI-Native';
+        maturityDesc = 'AI is embedded in how you operate. Your workflows, content, service, and decisions are systematically enhanced by AI.';
+      }
+
+      // Recommendations based on lowest-scoring areas
+      const recs = {
+        tools: [
+          'Audit your current software stack and cancel redundant subscriptions.',
+          'Map AI features in tools you already pay for (e.g., Notion AI, HubSpot AI, Slack AI).',
+          'Create a quarterly tool-review calendar with assigned owners.'
+        ],
+        workflow: [
+          'Document your top 3 repetitive tasks and identify automation candidates.',
+          'Implement AI scheduling and meeting transcription (Calendly + Otter or equivalent).',
+          'Build process playbooks that new hires can follow without 1:1 training.'
+        ],
+        marketing: [
+          'Use AI to draft one piece of content per week, then edit for voice.',
+          'Set up automated cross-posting from your primary channel to secondary channels.',
+          'Run AI-assisted keyword research to find underserved content opportunities.'
+        ],
+        service: [
+          'Deploy a simple FAQ chatbot or AI assistant for after-hours coverage.',
+          'Set up automated sentiment analysis on support tickets or reviews.',
+          'Create triggered email sequences for churn-risk and milestone customers.'
+        ],
+        data: [
+          'Build a one-page dashboard with your 3 most important business metrics.',
+          'Replace one manual spreadsheet report with an auto-generated version.',
+          'Assign data ownership roles so someone is accountable for accuracy.'
+        ],
+        security: [
+          'Draft a one-page AI usage policy and have every employee sign it.',
+          'Audit your AI tools for data-training opt-outs and enterprise tiers.',
+          'Set up automated backups and run a recovery drill this quarter.'
+        ]
+      };
+
+      // Sort areas by score ascending
+      const sortedAreas = Object.keys(areaScores).sort((a, b) => areaScores[a] - areaScores[b]);
+      const weakestAreas = sortedAreas.slice(0, 3);
+
+      // Render results
+      document.getElementById('scoreValue').textContent = totalScore;
+      document.getElementById('maturityBadge').textContent = maturity;
+
+      // Breakdown
+      const breakdownEl = document.getElementById('breakdown');
+      breakdownEl.innerHTML = '';
+      Object.keys(areaNames).forEach(key => {
+        const score = areaScores[key];
+        const max = areaCounts[key] * maxPerQuestion;
+        const pct = Math.round((score / max) * 100);
+        const div = document.createElement('div');
+        div.className = 'area-score';
+        div.innerHTML = `
+          <div class="area-score-name">${areaNames[key]}</div>
+          <div class="area-score-bar-wrap"><div class="area-score-bar" style="width:${pct}%"></div></div>
+          <div class="area-score-val">${score}/${max}</div>
+        `;
+        breakdownEl.appendChild(div);
+      });
+
+      // Recommendations
+      const recList = document.getElementById('recList');
+      recList.innerHTML = '';
+      weakestAreas.forEach(area => {
+        recs[area].forEach(rec => {
+          const li = document.createElement('li');
+          li.textContent = rec;
+          recList.appendChild(li);
+        });
+      });
+
+      // Show results
+      results.classList.add('show');
+      results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  </script>
+<!-- Analytics Event Tracking -->
+<script>
+(function() {
+  function trackEvent(eventName, params) {
+    if (typeof gtag === 'function') {
+      gtag('event', eventName, params || {});
+    }
+  }
+
+  // Track audit start on page load
+  trackEvent('audit_start', { page_path: window.location.pathname });
+
+  // Track first answer = engagement
+  var firstAnswerTracked = false;
+  var form = document.getElementById('auditForm');
+  if (form) {
+    form.addEventListener('change', function(e) {
+      if (!firstAnswerTracked && e.target.matches('input[type="radio"]')) {
+        firstAnswerTracked = true;
+        trackEvent('audit_progress', { page_path: window.location.pathname, milestone: 'first_answer' });
+      }
+    });
+  }
+
+  // Track CTA clicks
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('[data-track]');
+    if (!el) return;
+    var eventName = el.getAttribute('data-track');
+    var params = {};
+    Array.from(el.attributes).forEach(function(attr) {
+      if (attr.name.startsWith('data-') && attr.name !== 'data-track') {
+        var key = attr.name.replace('data-', '').replace(/-/g, '_');
+        params[key] = attr.value;
+      }
+    });
+    trackEvent(eventName, params);
+  });
+
+  // Intercept form submit to track completion
+  var origSubmit = form.onsubmit;
+  var submitBtn = document.getElementById('submitBtn');
+  if (submitBtn) {
+    submitBtn.addEventListener('click', function() {
+      var answered = form.querySelectorAll('input[type="radio"]:checked').length;
+      if (answered >= 24) {
+        trackEvent('audit_completion', { page_path: window.location.pathname, questions_answered: answered });
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>

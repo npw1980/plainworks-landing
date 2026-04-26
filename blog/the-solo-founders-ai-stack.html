@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PLAINWORKS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PLAINWORKS');
+  </script>
+  <!-- Google Search Console -->
+  <meta name="google-site-verification" content="google-site-verification-content" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Solo Founder's AI Stack: What Actually Works | Plainworks</title>
@@ -377,7 +387,7 @@
         <a href="/blog/">Blog</a>
         <a href="/#contact">Contact</a>
       </nav>
-      <a href="/#contact" class="btn btn-primary btn-small">Book a Call</a>
+      <a href="/#contact" class="btn btn-primary btn-small" data-track="cta_click" data-cta-name="book_call" data-cta-location="header">Book a Call</a>
     </div>
   </header>
 
@@ -494,5 +504,57 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+<!-- Analytics Event Tracking -->
+<script>
+(function() {
+  // Track custom events via GA4
+  function trackEvent(eventName, params) {
+    if (typeof gtag === 'function') {
+      gtag('event', eventName, params || {});
+    }
+  }
+
+  // Track CTA clicks
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('[data-track]');
+    if (!el) return;
+    var eventName = el.getAttribute('data-track');
+    var params = {};
+    Array.from(el.attributes).forEach(function(attr) {
+      if (attr.name.startsWith('data-') && attr.name !== 'data-track') {
+        var key = attr.name.replace('data-', '').replace(/-/g, '_');
+        params[key] = attr.value;
+      }
+    });
+    trackEvent(eventName, params);
+  });
+
+  // Track form submissions
+  document.querySelectorAll('form').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+      var trackName = form.getAttribute('data-track-form');
+      if (trackName) {
+        var params = { form_id: form.id || 'unknown' };
+        Array.from(form.attributes).forEach(function(attr) {
+          if (attr.name.startsWith('data-form-')) {
+            var key = attr.name.replace('data-form-', '').replace(/-/g, '_');
+            params[key] = attr.value;
+          }
+        });
+        trackEvent(trackName, params);
+      }
+    });
+  });
+
+  // Track blog post views (automatic on blog post pages)
+  var postTitle = document.querySelector('meta[property="og:title"]');
+  if (postTitle && window.location.pathname.includes('/blog/') && !window.location.pathname.endsWith('/blog/') && !window.location.pathname.endsWith('/blog/index.html')) {
+    trackEvent('blog_post_view', {
+      post_title: postTitle.getAttribute('content'),
+      page_path: window.location.pathname
+    });
+  }
+})();
+</script>
 </body>
 </html>

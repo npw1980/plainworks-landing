@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PLAINWORKS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PLAINWORKS');
+  </script>
+  <!-- Google Search Console -->
+  <meta name="google-site-verification" content="google-site-verification-content" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Strategy Blog for Solo Founders &amp; SMBs | Plainworks</title>
@@ -315,7 +325,7 @@
         <a href="/blog/">Blog</a>
         <a href="/#contact">Contact</a>
       </nav>
-      <a href="/#contact" class="btn btn-primary btn-small">Book a Call</a>
+      <a href="/#contact" class="btn btn-primary btn-small" data-track="cta_click" data-cta-name="book_call" data-cta-location="header">Book a Call</a>
     </div>
   </header>
 
@@ -330,30 +340,30 @@
     <div class="container blog-grid">
       <article class="blog-card">
         <div class="date">April 2026</div>
-        <h2><a href="/blog/the-solo-founders-ai-stack.html">The Solo Founder's AI Stack: What Actually Works in 2026</a></h2>
+        <h2><a href="/blog/the-solo-founders-ai-stack.html" data-track="blog_post_click" data-post-title="The Solo Founder's AI Stack: What Actually Works in 2026">The Solo Founder's AI Stack: What Actually Works in 2026</a></h2>
         <p class="excerpt">Solo founders waste thousands on AI tools they never use. Here's the 5-layer stack that actually moves the needle — tested across 20+ businesses, with exact costs and setup steps.</p>
-        <a href="/blog/the-solo-founders-ai-stack.html" class="read-more">Read the post</a>
+        <a href="/blog/the-solo-founders-ai-stack.html" class="read-more" data-track="blog_post_click" data-post-title="The Solo Founder's AI Stack: What Actually Works in 2026">Read the post</a>
       </article>
 
       <article class="blog-card">
         <div class="date">May 2026</div>
-        <h2><a href="/blog/why-most-smbs-fail-at-ai.html">Why Most SMBs Fail at AI (And It's Not the Tools)</a></h2>
+        <h2><a href="/blog/why-most-smbs-fail-at-ai.html" data-track="blog_post_click" data-post-title="Why Most SMBs Fail at AI (And It's Not the Tools)">Why Most SMBs Fail at AI (And It's Not the Tools)</a></h2>
         <p class="excerpt">67% of SMBs that try AI abandon it within 90 days. The problem isn't ChatGPT — it's how they approach adoption. Here's the real failure pattern and what winners do differently.</p>
-        <a href="/blog/why-most-smbs-fail-at-ai.html" class="read-more">Read the post</a>
+        <a href="/blog/why-most-smbs-fail-at-ai.html" class="read-more" data-track="blog_post_click" data-post-title="Why Most SMBs Fail at AI (And It's Not the Tools)">Read the post</a>
       </article>
 
       <article class="blog-card">
         <div class="date">May 2026</div>
-        <h2><a href="/blog/from-40-hours-to-4.html">From 40-Hour Weeks to 4: How One Freelancer Rebuilt Her Business with AI</a></h2>
+        <h2><a href="/blog/from-40-hours-to-4.html" data-track="blog_post_click" data-post-title="From 40-Hour Weeks to 4: How One Freelancer Rebuilt Her Business with AI">From 40-Hour Weeks to 4: How One Freelancer Rebuilt Her Business with AI</a></h2>
         <p class="excerpt">A freelance consultant cut her workweek from 40 hours to 4 without losing revenue. Here's exactly what she changed — proposal automation, client onboarding workflows, content systems, and the hard boundaries that made it stick.</p>
-        <a href="/blog/from-40-hours-to-4.html" class="read-more">Read the post</a>
+        <a href="/blog/from-40-hours-to-4.html" class="read-more" data-track="blog_post_click" data-post-title="From 40-Hour Weeks to 4: How One Freelancer Rebuilt Her Business with AI">Read the post</a>
       </article>
 
       <article class="blog-card">
         <div class="date">June 2026</div>
-        <h2><a href="/blog/the-ai-audit-framework.html">The AI Audit: A Framework for Evaluating Your Business</a></h2>
+        <h2><a href="/blog/the-ai-audit-framework.html" data-track="blog_post_click" data-post-title="The AI Audit: A Framework for Evaluating Your Business">The AI Audit: A Framework for Evaluating Your Business</a></h2>
         <p class="excerpt">Most businesses have no idea where AI could actually help. This 6-part audit framework maps your operations, scores each area from 1 to 5, and tells you exactly where to start for the highest ROI.</p>
-        <a href="/blog/the-ai-audit-framework.html" class="read-more">Read the post</a>
+        <a href="/blog/the-ai-audit-framework.html" class="read-more" data-track="blog_post_click" data-post-title="The AI Audit: A Framework for Evaluating Your Business">Read the post</a>
       </article>
     </div>
   </section>
@@ -372,5 +382,57 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+<!-- Analytics Event Tracking -->
+<script>
+(function() {
+  // Track custom events via GA4
+  function trackEvent(eventName, params) {
+    if (typeof gtag === 'function') {
+      gtag('event', eventName, params || {});
+    }
+  }
+
+  // Track CTA clicks
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('[data-track]');
+    if (!el) return;
+    var eventName = el.getAttribute('data-track');
+    var params = {};
+    Array.from(el.attributes).forEach(function(attr) {
+      if (attr.name.startsWith('data-') && attr.name !== 'data-track') {
+        var key = attr.name.replace('data-', '').replace(/-/g, '_');
+        params[key] = attr.value;
+      }
+    });
+    trackEvent(eventName, params);
+  });
+
+  // Track form submissions
+  document.querySelectorAll('form').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+      var trackName = form.getAttribute('data-track-form');
+      if (trackName) {
+        var params = { form_id: form.id || 'unknown' };
+        Array.from(form.attributes).forEach(function(attr) {
+          if (attr.name.startsWith('data-form-')) {
+            var key = attr.name.replace('data-form-', '').replace(/-/g, '_');
+            params[key] = attr.value;
+          }
+        });
+        trackEvent(trackName, params);
+      }
+    });
+  });
+
+  // Track blog post views (automatic on blog post pages)
+  var postTitle = document.querySelector('meta[property="og:title"]');
+  if (postTitle && window.location.pathname.includes('/blog/') && !window.location.pathname.endsWith('/blog/') && !window.location.pathname.endsWith('/blog/index.html')) {
+    trackEvent('blog_post_view', {
+      post_title: postTitle.getAttribute('content'),
+      page_path: window.location.pathname
+    });
+  }
+})();
+</script>
 </body>
 </html>
