@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The AI Audit: A 6-Part Framework for Your Business | Plainworks</title>
+  <meta name="description" content="Most businesses have no idea where AI could actually help. This 6-part audit framework maps your operations, scores each area, and tells you exactly where to start.">
+  <link rel="canonical" href="https://plainworks.ai/blog/the-ai-audit-framework.html">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://plainworks.ai/blog/the-ai-audit-framework.html">
+  <meta property="og:title" content="The AI Audit: A 6-Part Framework for Your Business | Plainworks">
+  <meta property="og:description" content="Most businesses have no idea where AI could actually help. This 6-part audit framework maps your operations, scores each area, and tells you exactly where to start.">
+  <meta property="og:image" content="https://plainworks.ai/assets/og-ai-audit-framework.jpg">
+  <meta property="og:site_name" content="Plainworks.ai">
+  <meta property="article:published_time" content="2026-05-19T08:00:00Z">
+  <meta property="article:author" content="Nathan White">
+  <meta property="article:section" content="Framework">
+  <meta property="article:tag" content="AI audit">
+  <meta property="article:tag" content="framework">
+  <meta property="article:tag" content="operations">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The AI Audit: A 6-Part Framework for Your Business | Plainworks">
+  <meta name="twitter:description" content="Most businesses have no idea where AI could actually help. This 6-part audit framework maps your operations, scores each area, and tells you exactly where to start.">
+  <meta name="twitter:image" content="https://plainworks.ai/assets/og-ai-audit-framework.jpg">
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "The AI Audit: A Framework for Evaluating Your Business",
+    "description": "Most businesses have no idea where AI could actually help. This 6-part audit framework maps your operations, scores each area from 1 to 5, and tells you exactly where to start.",
+    "author": { "@type": "Person", "name": "Nathan White", "url": "https://plainworks.ai" },
+    "publisher": { "@type": "Organization", "name": "Plainworks.ai", "logo": { "@type": "ImageObject", "url": "https://plainworks.ai/assets/logo.png" } },
+    "datePublished": "2026-05-19T08:00:00Z",
+    "dateModified": "2026-05-19T08:00:00Z",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://plainworks.ai/blog/the-ai-audit-framework.html" },
+    "image": { "@type": "ImageObject", "url": "https://plainworks.ai/assets/og-ai-audit-framework.jpg", "width": 1200, "height": 630 },
+    "keywords": ["AI audit", "framework", "operations", "SMB", "workflow assessment", "AI strategy"]
+  }
+  </script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19; --bg-alt: #111827; --surface: #1f2937; --surface-light: #374151;
+      --text: #f3f4f6; --text-muted: #9ca3af; --accent: #22d3ee; --accent-dark: #06b6d4;
+      --accent-glow: rgba(34, 211, 238, 0.15); --border: rgba(255,255,255,0.08);
+      --radius: 12px; --radius-lg: 16px; --max-width: 1120px; --content-width: 720px; --gap: 24px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--gap); }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(11, 15, 25, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo { font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em; color: var(--text); }
+    .logo span { color: var(--accent); }
+    nav { display: none; }
+    nav a { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); transition: color 0.2s; }
+    nav a:hover { color: var(--text); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: var(--radius); font-size: 0.9375rem; font-weight: 600; border: none; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+    .btn-primary { background: var(--accent); color: var(--bg); }
+    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(34, 211, 238, 0.25); }
+    .btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--surface-light); }
+    .btn-secondary:hover { background: var(--surface); border-color: var(--text-muted); }
+    .btn-small { padding: 8px 16px; font-size: 0.875rem; }
+    .article-header { padding: 64px 0 40px; text-align: center; }
+    .article-header .meta { font-size: 0.8125rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px; }
+    .article-header h1 { font-size: clamp(1.75rem, 4.5vw, 2.75rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; max-width: var(--content-width); margin: 0 auto 20px; }
+    .article-header .subtitle { font-size: 1.125rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 24px; line-height: 1.5; }
+    .article-header .author { display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 0.9375rem; }
+    .author-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-dark), var(--accent)); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.875rem; color: var(--bg); }
+    .author-name { font-weight: 600; color: var(--text); }
+    .author-role { font-size: 0.8125rem; color: var(--text-muted); }
+    .article-body { max-width: var(--content-width); margin: 0 auto; padding: 0 0 80px; }
+    .article-body p { margin-bottom: 1.25em; font-size: 1.0625rem; }
+    .article-body h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 48px 0 16px; line-height: 1.3; }
+    .article-body h3 { font-size: 1.25rem; font-weight: 600; margin: 32px 0 12px; line-height: 1.35; }
+    .article-body strong { font-weight: 600; color: var(--text); }
+    .article-body ul, .article-body ol { margin: 0 0 1.25em 1.5em; font-size: 1.0625rem; }
+    .article-body li { margin-bottom: 0.5em; }
+    .article-body a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+    .article-body a:hover { color: var(--accent-dark); }
+    .article-body hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+    .article-body pre { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; overflow-x: auto; font-size: 0.875rem; line-height: 1.5; margin: 20px 0; }
+    .article-body code { font-family: 'SF Mono', Monaco, monospace; color: var(--accent); }
+    .share-bar { max-width: var(--content-width); margin: 0 auto 64px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .share-bar span { font-size: 0.875rem; color: var(--text-muted); font-weight: 500; }
+    .share-bar a { font-size: 0.875rem; color: var(--text-muted); transition: color 0.2s; }
+    .share-bar a:hover { color: var(--accent); }
+    footer { border-top: 1px solid var(--border); padding: 40px 0; }
+    .footer-inner { display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
+    .footer-inner p { font-size: 0.875rem; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 0.875rem; color: var(--text-muted); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+    @media (min-width: 768px) { nav { display: flex; gap: 28px; align-items: center; } .footer-inner { flex-direction: row; justify-content: space-between; text-align: left; } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .article-header h1, .article-header .subtitle, .article-header .author { animation: fadeUp 0.6s ease-out both; }
+    .article-header .subtitle { animation-delay: 0.1s; }
+    .article-header .author { animation-delay: 0.2s; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container header-inner">
+      <a href="/" class="logo">Plainworks<span>.ai</span></a>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+      <a href="/#contact" class="btn btn-primary btn-small">Book a Call</a>
+    </div>
+  </header>
+
+  <article>
+    <div class="article-header">
+      <div class="meta">Framework · May 19, 2026 · 12 min read</div>
+      <h1>The AI Audit: A Framework for Evaluating Your Business</h1>
+      <p class="subtitle">Most businesses have no idea where AI could actually help. This 6-part audit framework maps your operations, scores each area, and tells you exactly where to start.</p>
+      <div class="author">
+        <div class="author-avatar">NW</div>
+        <div>
+          <div class="author-name">Nathan White</div>
+          <div class="author-role">Founder, Plainworks.ai</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-body">
+      <p>I sat down with a business owner who told me he wanted to "use more AI." I asked him where. He paused for ten seconds and said, "I guess... writing emails?"</p>
+
+      <p>This is the average small business owner's AI strategy. Vague intention, no diagnosis, random implementation. It is also why most AI adoption fails.</p>
+
+      <p>Before you buy a single tool or write a single prompt, you need to know where you are. The AI Audit is a structured way to find out.</p>
+
+      <h2>What the Audit Measures</h2>
+
+      <p>The framework evaluates six operational areas. Each gets a score from 1 (manual, no systems) to 5 (fully optimized with AI + human judgment). The goal is not to hit 5 everywhere. It is to identify the biggest gaps and highest-ROI opportunities.</p>
+
+      <h2>Area 1: Content &amp; Communication</h2>
+
+      <p><strong>What to evaluate:</strong></p>
+      <ul>
+        <li>How much content do you produce per month?</li>
+        <li>How long does each piece take from idea to publish?</li>
+        <li>Is your voice consistent across channels?</li>
+        <li>Do you have a content calendar, or do you post when you remember?</li>
+      </ul>
+
+      <p><strong>Scoring:</strong></p>
+      <ul>
+        <li><strong>1:</strong> No regular content. Ad-hoc posting when inspired.</li>
+        <li><strong>2:</strong> Some content, but inconsistent. Each piece takes 3+ hours.</li>
+        <li><strong>3:</strong> Regular schedule with templates. First drafts take 1-2 hours.</li>
+        <li><strong>4:</strong> AI-assisted first drafts with human editing. Consistent voice and calendar.</li>
+        <li><strong>5:</strong> Full content system — voice memo → multi-channel output → scheduled → measured.</li>
+      </ul>
+
+      <p><strong>Typical quick win:</strong> Build a prompt that turns your existing expertise into first drafts. Most founders go from 2 to 4 in two weeks.</p>
+
+      <h2>Area 2: Client &amp; Lead Management</h2>
+
+      <p><strong>What to evaluate:</strong></p>
+      <ul>
+        <li>How do leads enter your pipeline?</li>
+        <li>What happens between "first contact" and "signed contract"?</li>
+        <li>How do you track client projects and deliverables?</li>
+        <li>How much time do you spend on status updates and follow-ups?</li>
+      </ul>
+
+      <p><strong>Scoring:</strong></p>
+      <ul>
+        <li><strong>1:</strong> Everything in email and memory. No tracking system.</li>
+        <li><strong>2:</strong> Basic spreadsheet or notes app for tracking.</li>
+        <li><strong>3:</strong> CRM or project tool in use, but manual data entry.</li>
+        <li><strong>4:</strong> Automated lead capture, enrichment, and follow-up sequences.</li>
+        <li><strong>5:</strong> Integrated pipeline — lead → enriched → scored → nurtured → handed off to human at optimal moment.</li>
+      </ul>
+
+      <p><strong>Typical quick win:</strong> Automate the first two touchpoints after a lead expresses interest. This alone recaptures 5+ hours per week for most SMBs.</p>
+
+      <h2>Area 3: Operations &amp; Workflow</h2>
+
+      <p><strong>What to evaluate:</strong></p>
+      <ul>
+        <li>What tasks do you repeat at least three times per week?</li>
+        <li>How many tools do you context-switch between?</li>
+        <li>Where does information live? Is it findable?</li>
+        <li>What breaks or gets forgotten when you are busy?</li>
+      </ul>
+
+      <p><strong>Scoring:</strong></p>
+      <ul>
+        <li><strong>1:</strong> Everything is ad-hoc. Different process every time.</li>
+        <li><strong>2:</strong> Some processes documented, but not followed consistently.</li>
+        <li><strong>3:</strong> Core processes documented and mostly followed.</li>
+        <li><strong>4:</strong> Key workflows automated with tools like n8n or Make.</li>
+        <li><strong>5:</strong> Operations run on autopilot. Human intervention only for exceptions and judgment calls.</li>
+      </ul>
+
+      <p><strong>Typical quick win:</strong> Document your three most frequent workflows. Even without automation, documentation usually saves 2-3 hours per week by reducing decision fatigue.</p>
+
+      <h2>Area 4: Knowledge &amp; Information Management</h2>
+
+      <p><strong>What to evaluate:</strong></p>
+      <ul>
+        <li>Can you find a client conversation from six months ago in under 60 seconds?</li>
+        <li>Do you have a single source of truth for projects, clients, and content?</li>
+        <li>How much time do you spend "getting back up to speed" on projects?</li>
+        <li>Is your team (if you have one) working from the same information?</li>
+      </ul>
+
+      <p><strong>Scoring:</strong></p>
+      <ul>
+        <li><strong>1:</strong> Information scattered across email, notes, messages, and memory.</li>
+        <li><strong>2:</strong> Some centralization, but search is unreliable.</li>
+        <li><strong>3:</strong> Structured workspace with basic organization.</li>
+        <li><strong>4:</strong> Searchable knowledge base with AI-assisted retrieval.</li>
+        <li><strong>5:</strong> Living system — information auto-organizes, surfaces context before you need it, and improves over time.</li>
+      </ul>
+
+      <p><strong>Typical quick win:</strong> Move all active project information into one searchable workspace. The time savings from not hunting through email threads is immediate.</p>
+
+      <h2>Area 5: Decision-Making &amp; Strategy</h2>
+
+      <p><strong>What to evaluate:</strong></p>
+      <ul>
+        <li>How do you decide what to work on each day?</li>
+        <li>Do you have metrics that tell you if the business is healthy?</li>
+        <li>How do you evaluate new opportunities?</li>
+        <li>How often do you review and adjust your strategy?</li>
+      </ul>
+
+      <p><strong>Scoring:</strong></p>
+      <ul>
+        <li><strong>1:</strong> Reactive. Work on whatever is loudest.</li>
+        <li><strong>2:</strong> Some planning, but mostly tactical.</li>
+        <li><strong>3:</strong> Regular planning with basic metrics.</li>
+        <li><strong>4:</strong> Data-informed decisions with AI-assisted analysis and forecasting.</li>
+        <li><strong>5:</strong> Systematic strategy review with clear priorities, metrics, and adjustment triggers.</li>
+      </ul>
+
+      <p><strong>Typical quick win:</strong> Define three numbers that tell you if your business is healthy. Review them weekly. Most SMB owners have never done this.</p>
+
+      <h2>Area 6: Delivery &amp; Fulfillment</h2>
+
+      <p><strong>What to evaluate:</strong></p>
+      <ul>
+        <li>What does your client actually pay for?</li>
+        <li>How much of your delivery is repetitive vs. custom?</li>
+        <li>Where do delays and errors happen?</li>
+        <li>Could someone else (or something else) do 80% of the work?</li>
+      </ul>
+
+      <p><strong>Scoring:</strong></p>
+      <ul>
+        <li><strong>1:</strong> Every delivery is custom and manual.</li>
+        <li><strong>2:</strong> Some templates or checklists, but mostly custom work.</li>
+        <li><strong>3:</strong> Standardized delivery with clear phases and templates.</li>
+        <li><strong>4:</strong> AI-assisted delivery — research, drafting, formatting automated.</li>
+        <li><strong>5:</strong> Productized service. Human judgment applied only where it differentiates.</li>
+      </ul>
+
+      <p><strong>Typical quick win:</strong> Productize one service. Define the scope, deliverables, and timeline precisely. This is usually the highest-ROI change a service business can make.</p>
+
+      <h2>How to Use Your Scores</h2>
+
+      <p>After scoring each area, map them:</p>
+
+      <pre><code>Content:      ████░ 4
+Leads:        ██░░░ 2
+Operations:   █░░░░ 1
+Knowledge:    ██░░░ 2
+Strategy:     █░░░░ 1
+Delivery:     ███░░ 3</code></pre>
+
+      <p>Start with your lowest score that directly impacts revenue. For most service businesses, this is either Lead Management or Delivery. For content-heavy businesses, it is usually Content &amp; Communication.</p>
+
+      <p>Do not try to fix everything at once. Pick one area. Spend two weeks on it. Move to the next.</p>
+
+      <h2>The Audit in Practice</h2>
+
+      <p>I ran this audit with a 12-person agency last month. Their scores: Content 2, Leads 3, Operations 1, Knowledge 2, Strategy 1, Delivery 3.</p>
+
+      <p>We started with Operations. In three weeks, we automated their client onboarding, project kickoff, and monthly reporting. The founder got 12 hours per week back.</p>
+
+      <p>Then we moved to Content. We built a system that turned their weekly team calls into four pieces of published content. Their inbound inquiries doubled in six weeks.</p>
+
+      <p>The total investment: 40 hours of setup time, $120/month in tools.</p>
+
+      <h2>What to Do Now</h2>
+
+      <ol>
+        <li><strong>Score yourself</strong> on the six areas above. Be honest — this is for you, not LinkedIn.</li>
+        <li><strong>Pick your lowest revenue-impacting score.</strong></li>
+        <li><strong>Define one specific workflow</strong> in that area to automate or systematize.</li>
+        <li><strong>Spend two hours this week</strong> building the first version.</li>
+        <li><strong>Track one metric</strong> for two weeks to see if it worked.</li>
+      </ol>
+
+      <p>The businesses that win with AI are not the ones with the most tools. They are the ones with the clearest diagnosis.</p>
+
+      <hr>
+
+      <p><em>The AI Audit is the foundation of our <a href="/#services">AI Audit service tier</a>. We run the full framework with you, build your first three workflows, and leave you with a 90-day roadmap.</em></p>
+    </div>
+
+    <div class="container share-bar">
+      <span>Share this post:</span>
+      <a href="https://twitter.com/intent/tweet?text=The%20AI%20Audit%3A%20A%20Framework%20for%20Evaluating%20Your%20Business&url=https%3A%2F%2Fplainworks.ai%2Fblog%2Fthe-ai-audit-framework.html" target="_blank" rel="noopener">X / Twitter</a>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fplainworks.ai%2Fblog%2Fthe-ai-audit-framework.html" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:?subject=The%20AI%20Audit%20Framework&body=https%3A%2F%2Fplainworks.ai%2Fblog%2Fthe-ai-audit-framework.html">Email</a>
+    </div>
+  </article>
+
+  <footer>
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Plainworks.ai. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
